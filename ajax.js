@@ -38,7 +38,7 @@ var ajax = function () {
     }
     return true;
   }
-
+  // 合并
   var _extend = function(target,options) {
     if( typeof target !== 'object' || typeof options !== 'object' ) {
       return;
@@ -87,7 +87,11 @@ var ajax = function () {
 
     // 继承操作
     options.type = options.type.toUpperCase();
+    // 默认属性继承
     _extend(options,_options);
+
+
+    // ------------------------------------ //
 
     /*jsonp部分，直接返回*/
     if( options.dataType === 'jsonp' ) {
@@ -98,6 +102,7 @@ var ajax = function () {
       
       return;
     }
+    // ------------------------------------ //
 
      //XMLHttpRequest传参无影响
     var xhr = new (window.XMLHttpRequest || ActiveXObject)('Microsoft.XMLHTTP');
@@ -108,6 +113,8 @@ var ajax = function () {
     // 将data序列化
     var param= _param(options.data)
 
+    // ------------------------------------ //
+    // 搜索条件设置
     if( options.type === 'GET' ) {
       search = (options.url.indexOf('?') > -1 ? '&' : '?') + param;
       if(!options.cache) {
@@ -116,7 +123,7 @@ var ajax = function () {
       
       param = null;
     }
-
+     // ------------------------------------ //
     xhr.open( options.type, options.url + search, options.async );
 
     xhr.onreadystatechange = function() {
@@ -142,7 +149,7 @@ var ajax = function () {
         }
       }
     }
-
+    
     xhr.setRequestHeader('content-type',options.contentType);
     // get请求时param时null
     xhr.send(param);
