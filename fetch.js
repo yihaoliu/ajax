@@ -29,7 +29,7 @@ const ajax = (method, url, params, config) => {
   } else { //现在我们的后台 delete 是url传输
     url = url+'?'+Qs(params);
   }
-
+  new Hander
   return new Promise((resolve, reject) => {
     featch(url, Object.assign({
       method: method,

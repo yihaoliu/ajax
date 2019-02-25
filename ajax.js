@@ -43,7 +43,7 @@ var ajax = function () {
     if( typeof target !== 'object' || typeof options !== 'object' ) {
       return;
     }
-    var copy ,clone, name;
+    var name;
     for( name in options ) {
       if(options.hasOwnProperty(name) && !target.hasOwnProperty(name)) {
         target[name] = options[name];
